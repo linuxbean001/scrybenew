@@ -68,10 +68,6 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { InboxIcon, SparklesIcon } from '@heroicons/vue/24/outline'
-export default {
-  name: 'AlternatingImages',
-  components: { InboxIcon, SparklesIcon },
-}
 </script>

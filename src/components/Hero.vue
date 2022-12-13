@@ -129,13 +129,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
-export default {
-  name: 'Hero',
-}
 const navigation = [
   { name: 'Product', href: '#' },
   { name: 'Features', href: '#' },
