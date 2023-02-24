@@ -1,6 +1,4 @@
-# Effective Ventures Prototype Boilerplate
-
-This is a boilerplate repo meant to serve as a starter for future [VueJS](https://vuejs.org/) + [Tailwind UI](https://tailwindui.com/) projects. Fork this repo to customize for individual projects.
+# Scrybe
 
 ## Installation
 
