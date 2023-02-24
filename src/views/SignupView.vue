@@ -28,13 +28,13 @@
       <p class="mt-2 text-center text-sm text-gray-600">
         Or
         {{ ' ' }}
-        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">start your 14-day free trial</a>
+        <a href="/upload" class="font-medium text-indigo-600 hover:text-indigo-500">start your 14-day free trial</a>
       </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" action="/upload">
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
             <div class="mt-1">
@@ -115,6 +115,6 @@ export default {
   beforeCreate: function () {
     document.body.className = 'h-full'
     document.querySelector('html').className = 'h-full bg-gray-50'
-  },
+  }
 }
 </script>
