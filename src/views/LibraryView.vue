@@ -36,9 +36,17 @@
                     <a v-for="tab in tabs" :key="tab.name" :href="tab.href" :aria-current="tab.current ? 'page' : undefined" :class="[tab.current ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium']">{{ tab.name }}</a>
                   </nav>
                   <div class="ml-6 hidden items-center rounded-lg p-0.5 sm:flex">
-                  	<router-link to="/upload">
-                     <button type="button" class="flex-1 rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Upload</button>
-                     </router-link>
+                    
+                    <label class="text-sm flex w-full cursor-pointer appearance-none items-center justify-center rounded-md border-2 border-dashed border-gray-200 p-2 m-2 transition-all hover:border-primary-700">
+                      <div class="space-y-1 text-center">
+                        <div class="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
+                          <CloudArrowUpIcon class="h-6 w-6" aria-hidden="true" />
+                        </div>
+                        <div class="text-gray-600"><a href="#" class="font-medium text-primary-700 hover:text-primary-900">Click to upload files</a> </div>
+                      </div>
+                      <input id="example5" type="file" class="sr-only" />
+                    </label>                  
+                     
                   </div>
                 </div>
               </div>
@@ -111,6 +119,8 @@
 
 <script setup>
 import DashboardContainer from '../components/DashboardContainer.vue'  
+import { PlusIcon } from '@heroicons/vue/20/solid'
+import { ChatBubbleLeftEllipsisIcon, DocumentTextIcon, CloudArrowUpIcon } from '@heroicons/vue/24/outline'
 
 const tabs = [
   { name: 'All', href: '#', current: true },
