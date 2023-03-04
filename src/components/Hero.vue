@@ -68,8 +68,8 @@
             <h1>
               <span class="block text-base font-semibold text-gray-500 sm:text-lg lg:text-base xl:text-lg">Coming soon</span>
               <span class="mt-1 block text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
-                <span class="block text-gray-900">Data to enrich your</span>
-                <span class="block text-indigo-600">online business</span>
+                <span class="block text-gray-900">Write proposals</span>
+                <span class="block text-indigo-600">faster</span>
               </span>
             </h1>
             <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt sunt.</p>
@@ -120,7 +120,9 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
+  { name: 'Home', href: '#' },
   { name: 'Features', href: '#' },
+  { name: 'Pricing', href: '#' },
   { name: 'About', href: '#' }
 ]
 </script>

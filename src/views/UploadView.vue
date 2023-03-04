@@ -1,4 +1,5 @@
 <template>
+  <DashboardContainer pageTitle="Upload">
   <main class="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-32">
     <div x-data="{ activeTab:  0 }">
       <div class="border-b border-b-gray-100">
@@ -46,6 +47,7 @@
       </div>
     </div>
   </main>
+  </DashboardContainer>
 </template>
 
 <script>
@@ -58,5 +60,8 @@ export default {
 }
 </script>
 <script setup>
+import DashboardContainer from '../components/DashboardContainer.vue'
 import { ChatBubbleLeftEllipsisIcon, DocumentTextIcon, CloudArrowUpIcon } from '@heroicons/vue/24/outline'
+
+
 </script>
