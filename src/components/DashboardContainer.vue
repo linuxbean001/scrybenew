@@ -109,8 +109,12 @@
         </div>
       </div>
 
-      <main class="flex-1">
-         <slot></slot>
+      <main>
+        <div class="py-4">
+          <div class="mx-auto max-w-7xl px-2 sm:px-2">
+           <slot></slot>
+          </div>
+        </div>
       </main>
     </div>
   </div>

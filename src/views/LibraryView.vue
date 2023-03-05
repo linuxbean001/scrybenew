@@ -1,11 +1,11 @@
 <template>
-  <DashboardContainer pageTitle="Library">
+  <DashboardContainer>
   <!-- Main content -->
       <div class="flex flex-1 items-stretch overflow-hidden">
         <main class="flex-1 overflow-y-auto">
-          <div class="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-7xl px-4 pt-2 ">
             <div class="flex">
-              <h1 class="flex-1 text-2xl font-bold text-gray-900">Library</h1>
+              <h1 class="flex-1 text-3xl font-bold text-gray-900">Library</h1>
               <div class="ml-6 flex items-center rounded-lg bg-gray-100 p-0.5 sm:hidden">
                 <button type="button" class="rounded-md p-1.5 text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <Bars4Icon class="h-5 w-5" aria-hidden="true" />
@@ -35,7 +35,7 @@
                   <nav class="-mb-px flex flex-1 space-x-6 xl:space-x-8" aria-label="Tabs">
                     <a v-for="tab in tabs" :key="tab.name" :href="tab.href" :aria-current="tab.current ? 'page' : undefined" :class="[tab.current ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium']">{{ tab.name }}</a>
                   </nav>
-                  <div class="ml-6 hidden items-center rounded-lg p-0.5 sm:flex">
+                  <div class="ml-6 hidden items-center rounded-lg p-.5 sm:flex">
                     
                     <label class="text-sm flex w-full cursor-pointer appearance-none items-center justify-center rounded-md border-2 border-dashed border-gray-200 p-2 m-2 transition-all hover:border-primary-700">
                       <div class="space-y-1 text-center">
