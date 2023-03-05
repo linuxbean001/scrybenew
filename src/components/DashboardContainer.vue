@@ -149,7 +149,7 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, current: false },
   { name: 'Library', href: '/library', icon: InboxIcon, current: false },
-  { name: 'Chat', href: '/chat', icon: ChatBubbleLeftEllipsisIcon, current: false },
+  { name: 'Search', href: '/chat', icon: MagnifyingGlassIcon, current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },

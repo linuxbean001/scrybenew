@@ -28,7 +28,7 @@
       <p class="mt-2 text-center text-sm text-gray-600">
         Or
         {{ ' ' }}
-        <a href="/upload" class="font-medium text-indigo-600 hover:text-indigo-500">start your 14-day free trial</a>
+        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">start your 14-day free trial</a>
       </p>
     </div>
 
@@ -61,7 +61,7 @@
           </div>
 
           <div>
-            <a href="/upload" class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Sign in</a>
+            <a href="/library" class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Sign in</a>
           </div>
         </form>
 
