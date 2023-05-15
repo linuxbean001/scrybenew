@@ -1,41 +1,31 @@
 <template>
-  <div>
-    <div class="flex min-h-full flex-col justify-center sm:px-6 lg:px-8">
+  <div style="background-color: #d4deea">
+    <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
         <img
-          class="mx-auto h-12 w-auto mt-3"
+          class="mx-auto h-12 w-auto"
           src="../assets/images/logo.png"
           alt="Your Company"
         />
         <h2
-          class="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900"
+          class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
         >
-          Sign Up to your account
+          Sign in to your account
         </h2>
+        <p class="mt-2 text-center text-sm text-gray-600">
+          Or
+          {{ " " }}
+          <a
+            href="/signup"
+            class="font-medium text-indigo-600 hover:text-indigo-500"
+            >SignUp</a
+          >
+        </p>
       </div>
 
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form class="space-y-6" action="/upload" @submit.prevent="register">
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-700"
-                >Name</label
-              >
-              <div class="mt-1">
-                <input
-                  id="name"
-                  name="name"
-                  v-model="name"
-                  type="text"
-                  autocomplete="name"
-                  class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                />
-                <span v-if="errors.name" style="color: red; font-size: small">{{
-                  errors.name
-                }}</span>
-              </div>
-            </div>
-
+          <form class="space-y-6" action="/upload" @submit.prevent="submitForm">
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700"
                 >Email address</label
@@ -80,12 +70,40 @@
               </div>
             </div>
 
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input
+                  id="rememberMe"
+                  name="rememberMe"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  v-model="rememberMe"
+                />
+                <label for="rememberMe" class="ml-2 block text-sm text-gray-900"
+                  ><span
+                    v-if="errors.rememberMe"
+                    style="color: red; font-size: small"
+                    >{{ errors.rememberMe }}</span
+                  >
+                  Remember me</label
+                >
+              </div>
+
+              <div class="text-sm">
+                <a
+                  href="/forgot"
+                  class="font-medium text-indigo-600 hover:text-indigo-500"
+                  >Forgot your password?</a
+                >
+              </div>
+            </div>
+
             <div>
               <button
                 type="submit"
                 class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                Sign Up
+                Sign in
               </button>
             </div>
           </form>
@@ -104,35 +122,29 @@
 </template>
 
 <script>
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/Firebase";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
 export default {
-  name: "SignupView",
+  name: "SignInView",
   beforeCreate: function () {
     document.body.className = "h-full";
     document.querySelector("html").className = "h-full bg-gray-50";
   },
   data() {
     return {
-      name: "",
+      rememberMe: false,
       email: "",
       password: "",
       errors: {},
     };
   },
   methods: {
-    register() {
+    submitForm() {
+      // Perform validation on form input
       this.errors = {};
-
-      if (!this.name) {
-        this.errors.name = "Name is required";
-      }
 
       if (!this.email) {
         this.errors.email = "Email is required";
@@ -147,38 +159,51 @@ export default {
           "Password must contain both letters and numbers.";
       }
 
+      if (!this.rememberMe) {
+        this.errors.rememberMe = "";
+      }
+
+      if (this.rememberMe) {
+        localStorage.setItem("email", this.email);
+      } else {
+        localStorage.removeItem("email");
+      }
+
       // If there are errors, don't submit the form
       if (Object.keys(this.errors).length > 0) {
         return;
       }
       // If there are no errors, submit the form
       const formData = {
-        name: this.name,
         email: this.email,
         password: this.password,
+        rememberMe: this.rememberMe,
       };
       console.log("formData", formData);
 
-      createUserWithEmailAndPassword(auth, this.email, this.password)
+      signInWithEmailAndPassword(auth, this.email, this.password)
         .then((res) => {
-          // sendEmailVerification(auth.currentUser)
-          //   .then(() => {
-          //     toast.success("Email verification sent");
-          //     console.log("email verification", auth.currentUser.emailVerified);
-          //     if (auth.currentUser.emailVerified) {
-                toast.success("Register Successfully");
-                this.$router.push("/");
-          //     }
-          //   })
-          //   .catch((error) => {
-          //     toast.error("Error occurred while sending email verification");
-          //   });
+          const storedEmail = localStorage.getItem("email");
+          if (storedEmail) {
+            this.email = storedEmail;
+            this.rememberMe = true;
+            console.log(res);
+            toast.success("Login Successfully");
+            setTimeout(() => {
+              this.$router.push("/upload");
+            }, 1000);
+          }
         })
         .catch((error) => {
           var errorCode = error.code;
           var errorMessage = error.message;
-          if (errorCode === "auth/email-already-in-use") {
-            toast.error("Email already exists");
+          console.log(errorCode);
+          if (errorCode === "auth/wrong-password") {
+            toast.error("Wrong password.");
+          } else if (errorCode === "auth/user-not-found") {
+            toast.error("Email is not valid");
+          } else {
+            toast.error(errorMessage);
           }
         });
     },
