@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 // import HomeView from '../views/HomeView.vue'
 import SignInView from "../views/SignInView.vue";
-import SignUpView from "../views/SignUpView.vue";
+import SignupView from "../views/SignupView.vue";
 import Forgot from "../views/Forgot.vue";
 import UploadView from "../views/UploadView.vue";
 import SearchView from "../views/SearchView.vue";
@@ -21,8 +21,8 @@ const routes = [
   },
   {
     path: "/signup",
-    name: "signUp",
-    component: SignUpView,
+    name: "signup",
+    component: SignupView,
     meta: { requiresAuth: false },
   },
   {
